@@ -1,4 +1,5 @@
 import React from "react";
+import { Form } from "./Components/Form/Form";
 import { Header } from "./Components/Header/Header";
 import "./App.css";
 
@@ -7,12 +8,10 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Header
-        text="Hello World"
-        age={30}
-        ok={true}
-        person={{ firstName: "Jev", lastName: "Forsberg" }}
-        mySumFunc={mySumFunc}
+        welcome="Hello World"
+        person={{ firstName: "Jev", lastName: "Foorsberg", age: 30 }}
       />
+      <Form mySumFunc={mySumFunc} />
     </div>
   );
 };
