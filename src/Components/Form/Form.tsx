@@ -5,15 +5,16 @@ export interface Props {
   mySumFunc: (int1: number, int2: number) => number;
 }
 
-export interface State {
+export interface NumbersState {
   num1: string;
   num2: string;
-  sum: number;
 }
 
+export const defaultNumbersState: NumbersState = { num1: "", num2: "" };
+
 export const Form: React.FC<Props> = ({ mySumFunc }) => {
-  const [numbers, updateNumbers] = useState({ num1: "", num2: "" });
-  const [total, updateSum] = useState(0);
+  const [numbers, updateNumbers] = useState(defaultNumbersState);
+  const [total, updateSum] = useState<null | number>(null);
   const resetInputs = (): void => {
     updateNumbers({ num1: "", num2: "" });
   };
@@ -31,25 +32,32 @@ export const Form: React.FC<Props> = ({ mySumFunc }) => {
     resetInputs();
   };
   return (
-    <form>
-      <label htmlFor="num1">First Number:</label>
-      <input
-        type="number"
-        id="num1"
-        placeholder="Enter first number"
-        onChange={handleChange}
-        value={numbers.num1}
-      />
-      <label htmlFor="num2">Second Number:</label>
-      <input
-        type="number"
-        id="num2"
-        placeholder="Enter second number"
-        onChange={handleChange}
-        value={numbers.num2}
-      />
-      <input type="button" onClick={handleClick} value="Submit" />
-      <p>Sum: {total && <span>{total}</span>}</p>
-    </form>
+    <section>
+      <h3>Please use the following to add 2 numbers:</h3>
+      <form>
+        <div className="first number">
+          <label htmlFor="num1">First Number:</label>
+          <input
+            type="number"
+            id="num1"
+            placeholder="Enter first number"
+            onChange={handleChange}
+            value={numbers.num1}
+          />
+        </div>
+        <div className="second number">
+          <label htmlFor="num2">Second Number:</label>
+          <input
+            type="number"
+            id="num2"
+            placeholder="Enter second number"
+            onChange={handleChange}
+            value={numbers.num2}
+          />
+        </div>
+        <input type="button" onClick={handleClick} value="Find sum" />
+        <p>Current sum: {total && <span>{total}</span>}</p>
+      </form>
+    </section>
   );
 };

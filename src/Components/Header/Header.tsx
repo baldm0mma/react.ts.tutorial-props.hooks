@@ -12,8 +12,10 @@ export interface Props {
   person: Person;
 }
 
-export const Header: React.FC<Props> = () => {
+export const Header: React.FC<Props> = ({ welcome, person }) => {
   return (
-    <header></header>
-  )
-}
+    <header>
+      <h1>{`${welcome}, my name is ${person.firstName}, and I am ${person.age} years old.`}</h1>
+    </header>
+  );
+};
