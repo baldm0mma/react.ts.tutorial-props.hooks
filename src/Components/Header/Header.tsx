@@ -1,15 +1,23 @@
 import React from "react";
 import "./Header.css";
 
-export interface Props {
-  name: string;
-  age: number;
+export interface Person {
+  firstName: string;
+  lastName: string;
 }
 
-export const Header: React.FC<Props> = ({ name, age }) => {
+export interface Props {
+  text: string;
+  age: number;
+  ok: boolean;
+  mySumFunc: (int1: number, int2: number) => number;
+  person: Person;
+}
+
+export const Header: React.FC<Props> = ({ text, age, ok, mySumFunc, person }) => {
   return (
     <header>
-      <h1>{`Hello, my name is ${name}, and I am ${age} years old.`}</h1>
+      <h1>{`${text}, my name is ${person.firstName}, and I am ${age} years old.`}</h1>
     </header>
   );
 };
