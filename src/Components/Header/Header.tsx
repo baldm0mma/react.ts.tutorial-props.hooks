@@ -34,41 +34,34 @@ export const Header: React.FC<Props> = ({
     changeNumbers({ ...sumNumbers, [name]: value });
   };
   const handleClick = (): void => {
-    const sum = (): number => {
-      return mySumFunc(parseInt(sumNumbers.num1), parseInt(sumNumbers.num2));
-    }
-    changeNumbers({ ...sumNumbers, sum })
+    const sum: number = mySumFunc(
+      parseInt(sumNumbers.num1),
+      parseInt(sumNumbers.num2)
+    );
+    changeNumbers({ ...sumNumbers, sum });
   };
   return (
     <header>
       <h1>{`${text}, my name is ${person.firstName}, and I am ${age} years old.`}</h1>
       <form>
-        <ul>
-          <li>
-            <label htmlFor="num1">First Number:</label>
-            <input
-              type="number"
-              id="num1"
-              placeholder="Enter first number"
-              onChange={handleChange}
-              value={sumNumbers.num1}
-            />
-          </li>
-          <li>
-            <label htmlFor="num2">Second Number:</label>
-            <input
-              type="number"
-              id="num2"
-              placeholder="Enter second number"
-              onChange={handleChange}
-              value={sumNumbers.num1}
-            />
-          </li>
-          <li>
-            <input type="button" onClick={handleClick} />
-          </li>
-          <li>{sumNumbers.sum && <p>{sumNumbers.sum}</p>}</li>
-        </ul>
+        <label htmlFor="num1">First Number:</label>
+        <input
+          type="number"
+          id="num1"
+          placeholder="Enter first number"
+          onChange={handleChange}
+          value={sumNumbers.num1}
+        />
+        <label htmlFor="num2">Second Number:</label>
+        <input
+          type="number"
+          id="num2"
+          placeholder="Enter second number"
+          onChange={handleChange}
+          value={sumNumbers.num2}
+        />
+        <input type="button" onClick={handleClick} value="Submit" />
+        {sumNumbers.sum && <p>{sumNumbers.sum}</p>}
       </form>
     </header>
   );
