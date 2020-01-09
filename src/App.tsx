@@ -6,7 +6,13 @@ const App: React.FC = () => {
   const mySumFunc = (int1: number, int2: number): number => int1 + int2;
   return (
     <div className="App">
-      <Header text="Hello World" age={30} ok={true} person={{firstName: "Jev", lastName: "Forsberg"}} mySumFunc={mySumFunc()} />
+      <Header
+        text="Hello World"
+        age={30}
+        ok={true}
+        person={{ firstName: "Jev", lastName: "Forsberg" }}
+        mySumFunc={mySumFunc}
+      />
     </div>
   );
 };
