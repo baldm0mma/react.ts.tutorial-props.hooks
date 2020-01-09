@@ -27,18 +27,23 @@ export const Header: React.FC<Props> = ({
   mySumFunc,
   person
 }) => {
-  const [sumNumbers, changeNumbers] = useState({ num1: "", num2: "", sum: 0 });
+  const [numbers, updateNumbers] = useState({ num1: "", num2: "" });
+  const [total, updateSum] = useState(0);
+  const resetInputs = (): void => {
+    updateNumbers({ num1: "", num2: "" });
+  };
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const name = e.target.id;
     const value = e.target.value;
-    changeNumbers({ ...sumNumbers, [name]: value });
+    updateNumbers({ ...numbers, [name]: value });
   };
   const handleClick = (): void => {
     const sum: number = mySumFunc(
-      parseInt(sumNumbers.num1),
-      parseInt(sumNumbers.num2)
+      parseInt(numbers.num1),
+      parseInt(numbers.num2)
     );
-    changeNumbers({ ...sumNumbers, sum });
+    updateSum(sum);
+    resetInputs();
   };
   return (
     <header>
@@ -50,7 +55,7 @@ export const Header: React.FC<Props> = ({
           id="num1"
           placeholder="Enter first number"
           onChange={handleChange}
-          value={sumNumbers.num1}
+          value={numbers.num1}
         />
         <label htmlFor="num2">Second Number:</label>
         <input
@@ -58,10 +63,10 @@ export const Header: React.FC<Props> = ({
           id="num2"
           placeholder="Enter second number"
           onChange={handleChange}
-          value={sumNumbers.num2}
+          value={numbers.num2}
         />
         <input type="button" onClick={handleClick} value="Submit" />
-        {sumNumbers.sum && <p>{sumNumbers.sum}</p>}
+        <p>Sum: {total && <span>{total}</span>}</p>
       </form>
     </header>
   );

@@ -8,9 +8,9 @@ const App: React.FC = () => {
     <div className="App">
       <Header
         text="Hello World"
-        age={30}
+        age={37}
         ok={true}
-        person={{ firstName: "Jev", lastName: "Forsberg" }}
+        person={{ firstName: "Rachelle", lastName: "Forsberg" }}
         mySumFunc={mySumFunc}
       />
     </div>
