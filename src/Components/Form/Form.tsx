@@ -55,7 +55,7 @@ export const Form: React.FC<Props> = ({ mySumFunc }) => {
             value={numbers.num2}
           />
         </div>
-        <input type="button" onClick={handleClick} value="Find sum" />
+        <input className="myButton" type="button" onClick={handleClick} value="Calculate sum" />
         <p>Current sum: {total && <span>{total}</span>}</p>
       </form>
     </section>
